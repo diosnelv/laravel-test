@@ -31,3 +31,7 @@ Route::get('/', function () {
 Route::resource('generos', 'GenreController')->except([
 //    'index'
 ]);
+
+Route::resource('estados', 'StateController')->except([
+
+]);
