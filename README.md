@@ -11,6 +11,9 @@
 ###Ejecturar Cargadores
 ```php artisan db:seed```
 
+###Ejecturar un Cargador Específico
+```php artisan db:seed --class=UsersTableSeeder```
+
 ###Crear claves
 ```php artisan key:generate```
 
