@@ -9,7 +9,7 @@
 ```php artisan migrate```
 
 ###Ejecturar Cargadores
-```php artisan migrate```
+```php artisan db:seed```
 
 ###Crear claves
 ```php artisan key:generate```
@@ -17,8 +17,11 @@
 
 ##Otros comandos
 
-###Migrations
+###Crear Tablas (Migrations)
 ```php artisan make:migration create_producers_table```
+
+###Crear Cargadores (Seeders)
+```php artisan make:seeder GenresTableSeeder```
 
 ###Controladores
 ```php artisan make:controller GenreController --resource```
