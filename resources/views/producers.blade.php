@@ -6,7 +6,7 @@
         <br>
         <ul>
             @foreach ($producers as $dato)
-                <li>{{ $dato->company }}</li>
+                <li><a href="producers/{{$dato->id}}/edit">{{ $dato->company }}</a></li>
             @endforeach
         </ul>
 

@@ -12,6 +12,8 @@
                     <input class="input" type="text" name="company" id="company">
                 </div>
 
+                <label class="label" for="title">Description</label>
+
                 <div class="control">
                     <textarea class="input" type="text" name="description" id="description"></textarea>
                 </div>

@@ -15,7 +15,7 @@ class ProducerController extends Controller
     public function index()
     {
         $query = Producer::select('id', 'company', 'description')->get();
-        return view('producers',[
+        return view('producers', [
             'producers' => $query
         ]);
     }
@@ -62,11 +62,12 @@ class ProducerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        //
+        $dato = Producer::select('id', 'company', 'description')->find($id);
+        return view('producers-editar', ['dato' => $dato]);
     }
 
     /**
