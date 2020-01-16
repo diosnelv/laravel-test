@@ -68,6 +68,8 @@ class StateController extends Controller
     public function edit($id)
     {
         //
+        $dato = State::select('id','name')->find($id);
+        return view('estados-editar',['dato' => $dato]);
     }
 
     /**
@@ -84,7 +86,8 @@ class StateController extends Controller
         $old->name = $request->name;
         $old->save();
 
-        return response($old->toArray(),200);
+//        return response($old->toArray(),200);
+        return redirect('estados');
     }
 
     /**
