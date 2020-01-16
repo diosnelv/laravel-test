@@ -18,13 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('generos', function () {
-    $query = Genre::select('id','name')->get();
-
-    return view('generos',[
-        'generos' => $query
-    ]);
-});
+//Route::get('generos', function () {
+//    $query = Genre::select('id','name')->get();
+//
+//    return view('generos',[
+//        'generos' => $query
+//    ]);
+//});
 
 //Route::get('genres', 'GenreController@index');
 
