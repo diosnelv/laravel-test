@@ -31,3 +31,7 @@ Route::get('generos', function () {
 Route::resource('generos', 'GenreController')->except([
 //    'index'
 ]);
+
+Route::resource('producers', 'ProducerController')->except([
+//    'index'
+]);
