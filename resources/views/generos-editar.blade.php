@@ -20,5 +20,10 @@
                 </div>
             </div>
         </form>
+
+        <form action="{{url('generos', [$dato->id])}}" method="POST">
+            @method('DELETE')
+            <input type="submit" class="btn btn-danger" value="Delete"/>
+        </form>
     </div>
 </div>
