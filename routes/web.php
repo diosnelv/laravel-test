@@ -25,3 +25,5 @@ Route::get('/ruta-nueva', function () {
 
 Route::resource('genres', 'GenreController')->except([
 ]);
+Route::resource('types', 'TypesController')->except([
+]);
