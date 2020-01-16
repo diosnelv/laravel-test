@@ -29,5 +29,5 @@ Route::get('generos', function () {
 //Route::get('genres', 'GenreController@index');
 
 Route::resource('generos', 'GenreController')->except([
-    'index'
+//    'index'
 ]);

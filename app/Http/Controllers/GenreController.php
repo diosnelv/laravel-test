@@ -10,12 +10,14 @@ class GenreController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         $query = Genre::select('id','name')->get();
-        return response($query->toArray(),200);
+        return view('generos',[
+            'generos' => $query
+        ]);
     }
 
     /**
