@@ -10,29 +10,31 @@ class TypesController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         $query = Type::select('id','name')->get();
-        return response($query->toArray(),200);
-    }
+        return view('types',[
+            'types' => $query
+        ]);    }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view('types-crear');
+
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
@@ -40,8 +42,7 @@ class TypesController extends Controller
         $newModel->name = $request->name;
         $newModel->save();
 
-        return response($newModel->toArray(),200);
-    }
+        return redirect('types');    }
 
     /**
      * Display the specified resource.
@@ -59,11 +60,12 @@ class TypesController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Type  $type
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Type $type)
+    public function edit($id)
     {
-        //
+        $dato = Type::select('id','name')->find($id);
+        return view('types-editar',['dato' => $dato]);
     }
 
     /**
@@ -71,7 +73,7 @@ class TypesController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Type  $type
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request, $id)
     {
@@ -79,20 +81,20 @@ class TypesController extends Controller
         $old->name = $request->name;
         $old->save();
 
-        return response($old->toArray(),200);
+        return redirect('types');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Type  $type
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
         $borrar = Type::select('id','name')->find($id);
         Type::destroy($id);
 
-        return response($borrar,200);
+        return redirect('types');
     }
 }
