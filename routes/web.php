@@ -12,16 +12,22 @@
 */
 
 use App\Http\Controllers\GenreController;
+use App\Models\Genre;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ruta-nueva', function () {
-    return view('prueba');
+Route::get('generos', function () {
+    $query = Genre::select('id','name')->get();
+
+    return view('generos',[
+        'generos' => $query
+    ]);
 });
 
 //Route::get('genres', 'GenreController@index');
 
-Route::resource('genres', 'GenreController')->except([
+Route::resource('generos', 'GenreController')->except([
+    'index'
 ]);

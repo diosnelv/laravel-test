@@ -25,7 +25,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        return view('generos-crear');
     }
 
     /**
@@ -40,7 +40,7 @@ class GenreController extends Controller
         $newModel->name = $request->name;
         $newModel->save();
 
-        return response($newModel->toArray(),200);
+        return redirect('generos');
     }
 
     /**
