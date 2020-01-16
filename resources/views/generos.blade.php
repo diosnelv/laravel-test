@@ -6,7 +6,7 @@
         <br>
         <ul>
             @foreach ($generos as $dato)
-                <li>{{ $dato->name }}</li>
+                <li><a href="generos/{{$dato->id}}/edit">{{ $dato->name }}</a></li>
             @endforeach
         </ul>
 
