@@ -26,14 +26,9 @@ Route::get('/', function () {
 //    ]);
 //});
 
-//Route::get('genres', 'GenreController@index');
-
 Route::resource('generos', 'GenreController')->except([
 //    'index'
 ]);
-
-Route::resource('producers', 'ProducerController')->except([
-//    'index'
-]);
-Route::resource('types', 'TypesController')->except([
-]);
+Route::resource('producers', 'ProducerController');
+Route::resource('types', 'TypesController');
+Route::resource('estados', 'StateController');
