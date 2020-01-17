@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\State;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class StateController extends Controller
@@ -101,6 +101,6 @@ class StateController extends Controller
         $borrar = State::select('id','name')->find($id);
         State::destroy($id);
 
-        return response($borrar,200);
+        return redirect('estados');
     }
 }

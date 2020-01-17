@@ -32,3 +32,6 @@ Route::resource('generos', 'GenreController')->except([
 Route::resource('producers', 'ProducerController');
 Route::resource('types', 'TypesController');
 Route::resource('estados', 'StateController');
+Route::resource('peliculas', 'MovieController')->except([
+
+]);
