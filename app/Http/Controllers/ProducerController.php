@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Genre;
+use App\Models\Producer;
 use Illuminate\Http\Request;
 
-class GenreController extends Controller
+class ProducerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $query = Genre::select('id','name')->get();
-        return view('generos',[
-            'generos' => $query
+        $query = Producer::select('id', 'company', 'description')->get();
+        return view('producers', [
+            'producers' => $query
         ]);
     }
 
@@ -27,73 +27,75 @@ class GenreController extends Controller
      */
     public function create()
     {
-        return view('generos-crear');
+        return view('producers-crear');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        $newModel = new Genre();
-        $newModel->name = $request->name;
-        $newModel->save();
+        $newModel = new Producer();
+        $newModel->company = $request->company;
+        $newModel->description = $request->description;
 
-        return redirect('generos');
+        $newModel->save();
+        return redirect('producers');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        $query = Genre::select('id','name')->find($id);
-        return response($query->toArray(),200);
+        $query = Producer::select('id', 'company', 'description')->find($id);
+        return response($query->toArray(), 200);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
-        $dato = Genre::select('id','name')->find($id);
-        return view('generos-editar',['dato' => $dato]);
+        $dato = Producer::select('id', 'company', 'description')->find($id);
+        return view('producers-editar', ['dato' => $dato]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
+     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $old = Genre::select('id','name')->find($id);
-        $old->name = $request->name;
+        $old = Producer::select('id', 'company', 'description')->find($id);
+        $old->company = $request->company;
+        $old->description = $request->description;
         $old->save();
 
-        return redirect('generos');
+        return response($old->toArray(), 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function destroy($id)
     {
-        Genre::destroy($id);
-        return redirect('generos');
+        Producer::destroy($id);
+        return redirect('producers');
     }
 }

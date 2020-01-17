@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProducersTable extends Migration
+class UpdateMoviesColumns extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateProducersTable extends Migration
      */
     public function up()
     {
-        Schema::create('producers', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->text('company');
-            $table->text('description')->nullable();
-            $table->timestamps();
+        Schema::table('states', function (Blueprint $table) {
+            $table->unsignedInteger('state_id')->default(1);
+            $table->foreign('state_id')->references('id')->on('states');
         });
     }
 
@@ -28,6 +26,8 @@ class CreateProducersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('producers');
+        Schema::table('states', function (Blueprint $table) {
+            $table->unsignedInteger('state_id');
+        });
     }
 }
