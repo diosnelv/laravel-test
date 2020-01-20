@@ -17,7 +17,7 @@
 
                 <div class="control">
                     <select name="genre_id" >
-                        @foreach ($genero as $dato)
+                        @foreach ($genre as $dato)
                             <option value="{{ $dato->id }}">{{ $dato->name }}</option>
                         @endforeach
                     </select>
@@ -30,8 +30,11 @@
 
                 <div class="control">
                     <select name="producer_id" >
-                            <option value="1">Marvel</option>
+                        @foreach ($producer as $dato)
+                            <option value="{{ $dato->id }}">{{ $dato->company }}</option>
+                        @endforeach
                     </select>
+
                 </div>
             </div>
             <div class="field">
@@ -39,7 +42,21 @@
 
                 <div class="control">
                     <select name="type_id" >
-                        <option value="1">Peliculas</option>
+                        @foreach ($type as $dato)
+                            <option value="{{ $dato->id }}">{{ $dato->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <br>
+            <div class="field">
+                <label class="estado" for="title">Estado</label>
+
+                <div class="control">
+                    <select name="state_id" >
+                        @foreach ($state as $dato)
+                            <option value="{{ $dato->id }}">{{ $dato->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

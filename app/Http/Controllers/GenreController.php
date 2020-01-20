@@ -14,10 +14,15 @@ class GenreController extends Controller
      */
     public function index()
     {
-        $query = Genre::select('id','name')->get();
-        return view('generos',[
-            'generos' => $query
-        ]);
+        $query = Genre::select('id','name')
+            ->with('movie')
+            ->get();
+
+//        return view('generos',[
+//            'generos' => $query
+//        ]);
+
+        return response($query->toArray(),200);
     }
 
     /**

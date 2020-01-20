@@ -9,6 +9,9 @@
             <tr>
                 <td>Pelicula</td>
                 <td>Genero</td>
+                <td>Productor</td>
+                <td>Tipo</td>
+                <td>Estado</td>
             </tr>
             </thead>
             <tbody>
@@ -17,6 +20,9 @@
 
                     <td><a href="peliculas/{{$dato->id}}/edit">{{ $dato->pelicula }}</a></td>
                     <td><a href="peliculas/{{$dato->id}}/edit">{{ $dato->genero }}</a></td>
+                    <td><a href="peliculas/{{$dato->id}}/edit">{{ $dato->productor }}</a></td>
+                    <td><a href="peliculas/{{$dato->id}}/edit">{{ $dato->tipo }}</a></td>
+                    <td><a href="peliculas/{{$dato->id}}/edit">{{ $dato->estado }}</a></td>
 
             </tr>
             @endforeach

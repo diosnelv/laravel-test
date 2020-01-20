@@ -13,7 +13,7 @@ class UpdateMoviesColumns extends Migration
      */
     public function up()
     {
-        Schema::table('states', function (Blueprint $table) {
+        Schema::table('movies', function (Blueprint $table) {
             $table->unsignedInteger('state_id')->default(1);
             $table->foreign('state_id')->references('id')->on('states');
         });
@@ -26,8 +26,8 @@ class UpdateMoviesColumns extends Migration
      */
     public function down()
     {
-        Schema::table('states', function (Blueprint $table) {
-            $table->unsignedInteger('state_id');
+        Schema::table('movies', function (Blueprint $table) {
+            $table->dropColumn('state_id');
         });
     }
 }
